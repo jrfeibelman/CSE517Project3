@@ -20,8 +20,8 @@ def l2distance(X,Z):
     dd, m = Z.shape
     assert d == dd, 'First dimension of X and Z must be equal in input to l2distance'
     
-    D = np.zeros((n, m))
+#     D = np.zeros((n, m))
     
+    return np.sum(np.square(X - Z))
     
-    
-    return D
+#     return D

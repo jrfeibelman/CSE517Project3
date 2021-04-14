@@ -22,8 +22,13 @@ def computeK(kernel_type, X, Z, kpar):
     dd, m = Z.shape
     assert d == dd, 'First dimension of X and Z must be equal in input to computeK'
     
-    K = np.zeros((n,m))
+#     K = np.zeros((n,m))
     
+    if kernel_type == 'linear':
+        return (X.T @ Z)
+    if kernel_type == 'poly':
+        return ((X.T @ Z) + 1)**kpar
+    if kernel_type == 'rbf':
+        return np.exp(- kpar * l2distance(X,Z)**2)
     
-    
-    return K
+#     return K
