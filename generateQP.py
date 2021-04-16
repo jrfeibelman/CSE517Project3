@@ -18,8 +18,14 @@ from cvxopt import matrix
 def generateQP(K, yTr, C):
     yTr = yTr.astype(np.double)
     n = yTr.shape[0]
-    
-    
+
+    K = K.reshape(-1,1)
+    Q = (K @ yTr.T) * yTr
+    p = np.ones(n)
+    G = np.identity(n)
+    h = np.ones(n) * C
+    A = yTr * np.identity(n)
+    b = np.zeros(n)
             
     return matrix(Q), matrix(p), matrix(G), matrix(h), matrix(A), matrix(b)
 
