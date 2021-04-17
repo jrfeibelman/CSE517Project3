@@ -6,7 +6,7 @@ for three different function linear, rbf or polynomial.
 Input:
 kernel_type: either 'linear','poly','rbf'
 X: n input vectors of dimension d (dxn);
-Z: m input vectors of dimension d (dxn);
+Z: m input vectors of dimension d (dxm);
 kpar: kernel parameter (inverse kernel width gamma in case of RBF, degree in case of polynomial)
 
 OUTPUT:

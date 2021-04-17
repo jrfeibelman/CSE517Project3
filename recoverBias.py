@@ -15,7 +15,7 @@ Solves for the hyperplane bias term, which is uniquely specified by the support 
 import numpy as np
 
 def recoverBias(K,yTr,alphas,C):
-      
+
     i_star = find_i_star(alphas,C)
     
     bias = 1/yTr[i_star] - K[i_star,:] @ (alphas * yTr)

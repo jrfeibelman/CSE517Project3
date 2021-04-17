@@ -3,7 +3,7 @@ import numpy as np
 """
 function D=l2distance(X,Z)
 	
-Computes the Euclidean distance matrix. 
+Computes the t distance matrix. 
 Syntax:
 D=l2distance(X,Z)
 Input:
@@ -21,6 +21,19 @@ def l2distance(X,Z):
     assert d == dd, 'First dimension of X and Z must be equal in input to l2distance'
     
 #     D = np.zeros((n, m))
-    return np.sqrt(np.sum(np.square(X - Z), axis=0))
-    
-#     return D
+    D = np.sqrt(np.sum(np.square(X - Z), axis=0))
+
+#     ISSUE: np.sum compresses (100,100) to (100,1)
+#     XZ = X - Z
+#     SQ = XZ.T @ XZ
+#     D = np.sum(SQ, axis=0)[:, np.newaxis]
+#     D = np.sqrt(D)
+
+#     ISSUE: np.sqrt(a+b+c=negative numbers)
+#     a = np.sum(X**2, axis=0)[:, np.newaxis]
+#     b = np.sum(Z**2, axis=0)[:, np.newaxis]
+#     c = -2 * (a @ b.T)
+#     D = np.sqrt(a+b+c)
+
+    print(D.shape)
+    return D

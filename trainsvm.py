@@ -22,7 +22,6 @@ from createsvmclassifier import createsvmclassifier
 def trainsvm(xTr,yTr, C, ktype, P):    
     #print("Generate Kernel...")
     K = computeK(ktype, xTr, xTr, P)
-    
     #print("Generate QP...")
     Q, p, G, h, A, b = generateQP(K, yTr, C)
     
