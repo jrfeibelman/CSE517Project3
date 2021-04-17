@@ -21,7 +21,6 @@ def computeK(kernel_type, X, Z, kpar):
     d, n = X.shape
     dd, m = Z.shape
     assert d == dd, 'First dimension of X and Z must be equal in input to computeK'
-    
 #     K = np.zeros((n,m))
     
     if kernel_type == 'linear':

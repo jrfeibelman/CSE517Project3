@@ -18,14 +18,17 @@ import numpy as np
 from computeK import computeK
 
 def createsvmclassifier(xTr, yTr, alphas, bias, ktype, kpar):
+    
     # classifier that returns all ones
     def svmclassify(xTe):
-        print(xTe)
-#         return np.sign(xTe)
-        d,n = xTe.shape
-        return np.ones((n,1))
-        
+        print("SVM:%s"%ktype)
+        K = computeK(ktype, xTe, xTr, kpar)
+#         print(alphas.shape)
+#         print((alphas * yTr).shape)
+        sol = bias + K @ (alphas * yTr)
     
+        return np.sign(sol)
+   
     
     return svmclassify
     

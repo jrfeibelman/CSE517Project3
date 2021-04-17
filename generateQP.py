@@ -20,7 +20,6 @@ def generateQP(K, yTr, C):
     n = yTr.shape[0]
 
     Q = (yTr.T * K) * yTr
-    print(Q.shape)
     p = np.ones(n)
     G = np.identity(n)
     h = np.ones(n) * C

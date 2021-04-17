@@ -29,8 +29,9 @@ def find_i_star(alphas,C):
     max_dist = abs(alphas[0] - C) + alphas[0]
     max_idx = 0
     for i in range(1,len(alphas)):
-        if max_dist < abs(alphas[i] - C) + alphas[i]:
-            max_dist = abs(alphas[i] - C) + alphas[i]
+        curr = abs(alphas[i] - C) + alphas[i]
+        if max_dist < curr:
+            max_dist = curr
             max_idx = i
                    
     return max_idx

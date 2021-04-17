@@ -40,5 +40,4 @@ def l2distance(X,Z):
 #     c = -2 * (a @ b.T)
 #     D = np.sqrt(a+b+c)
 
-    print(D.shape)
     return D
