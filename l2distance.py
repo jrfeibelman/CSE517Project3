@@ -20,8 +20,13 @@ def l2distance(X,Z):
     dd, m = Z.shape
     assert d == dd, 'First dimension of X and Z must be equal in input to l2distance'
     
+    Xf = np.tile(X.flatten('f'), (1,m)).reshape((d,-1),order='f')
+    Zf = np.repeat(Z, n, axis = 1)
+
+    # print(Xf.shape)
+    # print(Zf.shape)
 #     D = np.zeros((n, m))
-    D = np.sqrt(np.sum(np.square(X - Z), axis=0))
+    D = np.sqrt(np.sum(np.square(Xf - Zf), axis=0)).reshape(m,n).T
 
 #     ISSUE: np.sum compresses (100,100) to (100,1)
 #     XZ = X - Z
