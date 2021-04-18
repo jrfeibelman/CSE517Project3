@@ -21,14 +21,9 @@ def createsvmclassifier(xTr, yTr, alphas, bias, ktype, kpar):
     
     # classifier that returns all ones
     def svmclassify(xTe):
-        print("SVM:%s"%ktype)
         K = computeK(ktype, xTe, xTr, kpar)
-#         print(alphas.shape)
-#         print((alphas * yTr).shape)
-        sol = bias + K @ (alphas * yTr)
-    
+        sol = K @ (alphas * yTr) + bias
         return np.sign(sol)
    
-    
     return svmclassify
     
