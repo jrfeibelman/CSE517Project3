@@ -22,9 +22,13 @@ def generateQP(K, yTr, C):
     Q = (yTr.T * K) * yTr
     p = np.ones(n)
     G = np.identity(n)
+    G = np.vstack([G, -1*G])
     h = np.ones(n) * C
-    A = yTr * np.identity(n)
-    b = np.zeros(n)
+    h = np.append(h, np.zeros(n))
+    # G = -1*np.identity(n)
+    # h = np.zeros(n)
+    A = yTr.T
+    b = np.zeros(1)
             
     return matrix(Q), matrix(p), matrix(G), matrix(h), matrix(A), matrix(b)
 
