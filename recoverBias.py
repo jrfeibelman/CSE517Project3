@@ -17,9 +17,9 @@ import numpy as np
 def recoverBias(K,yTr,alphas,C):
     
     i_star = find_i_star(alphas,C)
-    
-    bias = 1.0/yTr[i_star] - K[i_star,:] @ (alphas * yTr)
-        
+#     print((yTr[i_star]))
+    bias =  K[i_star,:] @ (alphas * yTr) - yTr[i_star]
+    print(bias[0])
     return bias 
     
 def find_i_star(alphas,C):
@@ -35,10 +35,10 @@ def find_i_star(alphas,C):
         if alphas[i] >= C or alphas[i] <= 0:
             continue
         
-        curr = abs(alphas[i] - C) + alphas[i]
+        dist = abs(C/2.0 - alphas[i])
         
-        if max_dist < curr:
-            max_dist = curr
+        if max_dist < dist:
+            max_dist = dist
             max_idx = i
                    
     return max_idx
