@@ -17,28 +17,29 @@ import numpy as np
 def recoverBias(K,yTr,alphas,C):
     
     i_star = find_i_star(alphas,C)
-#     print((yTr[i_star]))
-    bias =  K[i_star,:] @ (alphas * yTr) - yTr[i_star]
+    bias =  K[i_star,:] @ (alphas * yTr)
     print(bias[0])
-    return bias 
+    ratio = float(bias).as_integer_ratio()
+    div = float(ratio[0] - yTr[i_star] * ratio[1]) / ratio[1]
+    print(div)
+    return div
     
 def find_i_star(alphas,C):
     """
     Return index of element in alpha that is furthest from 0 and C
+                or closest to C/2 
     0 < a < C
     """
-    max_dist = -1
-    max_idx = 0
-        
+    opt_dist = -1
+    opt_idx = 0
     for i in range(len(alphas)):
-        
         if alphas[i] >= C or alphas[i] <= 0:
             continue
         
         dist = abs(C/2.0 - alphas[i])
         
-        if max_dist < dist:
-            max_dist = dist
-            max_idx = i
+        if dist < opt_dist:
+            opt_dist = dist
+            opt_idx = i
                    
-    return max_idx
+    return opt_idx
