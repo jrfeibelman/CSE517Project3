@@ -25,8 +25,6 @@ def generateQP(K, yTr, C):
     G = np.vstack([G, -1*G])
     h = np.ones(n) * C
     h = np.append(h, np.zeros(n))
-    # G = -1*np.identity(n)
-    # h = np.zeros(n)
     A = yTr.T
     b = np.zeros(1)
             
